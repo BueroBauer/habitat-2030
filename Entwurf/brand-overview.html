@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habitat 2030 — Brand Overview</title>
+<style>
+  :root {
+    --dunkel:  #1A1A1A;
+    --weiss:   #FFFFFF;
+    --sand:    #B9B2A5;
+    --nebel:   #E7E2E6;
+    --himmel:  #BBCEDF;
+    --magenta: #FF00BB;
+    --lime:    #66FF00;
+    --violett: #8054F1;
+    --font: 'Neue Haas Unica', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--sand); color: var(--dunkel); font-family: var(--font); font-size: 13px; line-height: 1.4; }
+
+  .page { max-width: 1280px; margin: 0 auto; padding: 48px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
+
+  /* HEADER */
+  .header { grid-column: 1/-1; display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 20px; border-bottom: 2px solid var(--dunkel); margin-bottom: 2px; }
+  .brand-name { font-size: 52px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--dunkel); }
+  .brand-meta { text-align: right; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.5; line-height: 1.8; }
+
+  /* SECTION LABEL */
+  .section-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.45; margin-bottom: 16px; }
+  .cat-label { grid-column: 1/-1; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--dunkel); padding: 10px 0 5px; }
+
+  /* FARBEN */
+  .farben-row    { grid-column: 1/-1; display: grid; gap: 2px; margin-bottom: 2px; }
+  .farben-row-p  { grid-template-columns: repeat(2, 1fr); }
+  .farben-row-bg { grid-template-columns: repeat(3, 1fr); }
+  .farben-row-hl { grid-template-columns: repeat(3, 1fr); }
+
+  .farbfeld { padding: 18px 16px; display: flex; flex-direction: column; justify-content: space-between; min-height: 148px; }
+  .farbfeld-top { display: flex; flex-direction: column; gap: 3px; }
+  .farbfeld-rolle { font-size: 9px; text-transform: uppercase; letter-spacing: 0.13em; opacity: 0.55; }
+  .farbfeld-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; }
+  .farbfeld-codes { font-size: 9.5px; font-family: 'SF Mono', monospace; line-height: 1.8; opacity: 0.75; }
+
+  .f-dunkel  { background: #1A1A1A; color: #B9B2A5; }
+  .f-weiss   { background: #FFFFFF; color: #1A1A1A; border: 1px solid rgba(26,26,26,.15); }
+  .f-sand    { background: #B9B2A5; color: #1A1A1A; border: 1px solid rgba(26,26,26,.15); }
+  .f-nebel   { background: #E7E2E6; color: #1A1A1A; border: 1px solid rgba(26,26,26,.12); }
+  .f-himmel  { background: #BBCEDF; color: #1A1A1A; border: 1px solid rgba(26,26,26,.12); }
+  .f-magenta { background: #FF00BB; color: #1A1A1A; }
+  .f-violett { background: #8054F1; color: #fff; }
+  .f-lime    { background: #66FF00; color: #1A1A1A; }
+
+  /* FARBPAARE */
+  .paare { grid-column: 1/-1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-bottom: 2px; }
+  .paar { padding: 22px 18px; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px; }
+  .paar-text { font-size: clamp(18px, 2vw, 26px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.0; }
+  .paar-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5; }
+  .p1 { background: var(--dunkel);  color: var(--magenta); }
+  .p2 { background: var(--magenta); color: var(--dunkel); }
+  .p3 { background: var(--dunkel);  color: var(--violett); }
+  .p4 { background: var(--dunkel);  color: var(--lime); }
+  .p5 { background: var(--sand);    color: var(--dunkel); border: 1px solid rgba(26,26,26,.12); }
+
+  /* HERO */
+  .hero-block { grid-column: 1/-1; background: var(--dunkel); color: var(--sand); padding: 48px; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: end; margin-bottom: 0; }
+  .hero-kicker { font-size: 9px; text-transform: uppercase; letter-spacing: 0.18em; opacity: 0.45; margin-bottom: 16px; }
+  .hero-year { font-size: 100px; font-weight: 800; letter-spacing: -0.04em; line-height: 0.85; color: var(--magenta); }
+  .hero-story { font-size: clamp(15px, 1.6vw, 19px); line-height: 1.55; font-weight: 400; opacity: 0.85; }
+  .hero-story strong { color: var(--magenta); font-weight: 700; }
+
+  /* TYPOGRAFIE */
+  .typo-block { grid-column: 1/7; background: var(--lime); color: var(--dunkel); padding: 40px; }
+  .typo-weights { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; border-top: 1px solid rgba(26,26,26,.15); padding-top: 16px; }
+  .tw { display: flex; align-items: baseline; gap: 16px; padding: 6px 0; border-bottom: 1px solid rgba(26,26,26,.08); }
+  .tw-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.4; width: 80px; flex-shrink: 0; }
+  .tw-sample { line-height: 1; }
+  .tw-r  { font-weight: 400; font-size: 22px; }
+  .tw-m  { font-weight: 500; font-size: 22px; }
+  .tw-b  { font-weight: 700; font-size: 22px; }
+  .tw-xb { font-weight: 800; font-size: 22px; }
+  .typo-display-big { font-size: clamp(48px, 6vw, 76px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.9; margin: 16px 0 8px; }
+
+  /* CLAIMS */
+  .claims-block { grid-column: 7/-1; background: var(--magenta); color: var(--dunkel); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+  .claim-line { font-size: clamp(14px, 1.7vw, 20px); font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.1; padding: 11px 0; border-bottom: 1px solid rgba(26,26,26,.15); display: flex; gap: 6px; flex-wrap: wrap; align-items: baseline; }
+  .claim-line:last-of-type { border-bottom: none; }
+  .claim-var { background: var(--dunkel); color: var(--magenta); padding: 1px 7px; font-size: 0.88em; }
+  .hauptsatz { font-size: clamp(18px, 2.5vw, 30px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin-top: 20px; }
+  .hauptsatz-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.45; margin-top: 5px; }
+
+  /* LOGO */
+  .logo-block { grid-column: 1/7; background: var(--sand); padding: 36px; border: 1px solid rgba(26,26,26,.1); }
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 4px; }
+  .logo-demo { padding: 16px 20px; font-size: 17px; font-weight: 800; display: flex; flex-direction: column; gap: 5px; }
+  .logo-tag-small { font-size: 9px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; }
+  .ld1 { background: var(--dunkel);  color: var(--sand); }
+  .ld2 { background: var(--dunkel);  color: var(--magenta); }
+  .ld3 { background: var(--magenta); color: var(--dunkel); }
+  .ld4 { background: var(--lime);    color: var(--dunkel); }
+
+  /* SOCIAL MEDIA */
+  .social-block { grid-column: 1/-1; background: var(--nebel); padding: 36px; display: flex; flex-direction: column; gap: 16px; }
+  .social-avatar-wrap { display: flex; align-items: center; gap: 32px; }
+  .avatar-tag { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.45; }
+
+  /* ARCHETYPEN */
+  .arch-block { grid-column: 7/-1; background: var(--dunkel); color: var(--sand); padding: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  .arch-pie-col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .arch-pie-legend { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+  .arch-legend-item { display: flex; align-items: center; gap: 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .arch-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .arch-legend-pct { margin-left: auto; opacity: 0.5; font-size: 9px; }
+  .arch-tags-col { display: flex; flex-direction: column; gap: 16px; }
+  .arch-item { }
+  .arch-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .arch-name { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
+  .arch-level { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; }
+  .arch-primary .arch-name   { color: var(--magenta); }
+  .arch-secondary .arch-name { color: var(--violett); }
+  .arch-tertiary .arch-name  { color: var(--lime); }
+  .arch-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+  .tag { font-size: 8.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 7px; border: 1px solid; }
+  .arch-primary .tag   { border-color: rgba(255,0,187,.35);  color: var(--magenta); }
+  .arch-secondary .tag { border-color: rgba(128,84,241,.35); color: var(--violett); }
+  .arch-tertiary .tag  { border-color: rgba(102,255,0,.35);  color: var(--lime); }
+
+  /* ZIELGRUPPEN */
+  .zg-row { grid-column: 1/-1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .msg-item { padding: 28px; }
+  .m1 { background: var(--dunkel);  color: var(--sand); }
+  .m2 { background: var(--magenta); color: var(--dunkel); }
+  .m3 { background: var(--lime);    color: var(--dunkel); }
+  .msg-zg { font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.5; margin-bottom: 12px; }
+  .msg-text { font-size: 14px; line-height: 1.55; font-weight: 500; }
+
+  /* FOOTER */
+  .footer { grid-column: 1/-1; border-top: 1px solid rgba(26,26,26,.2); padding-top: 14px; display: flex; justify-content: space-between; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.35; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-name">Habitat 2030</div>
+    <div class="brand-meta">Brand Overview — Stand 18.05.2026<br>In Bearbeitung</div>
+  </div>
+
+  <!-- ZIELGRUPPEN -->
+  <div class="cat-label">Zielgruppen</div>
+  <div class="zg-row">
+    <div class="msg-item m1">
+      <div class="msg-zg">Bauträger</div>
+      <div class="msg-text">Klimaneutrales Bauen ist machbar. Um 20–30% besser als bisher — ohne das doppelt zu zahlen. Hier sind 80+ Projekte als Beweis.</div>
+    </div>
+    <div class="msg-item m2">
+      <div class="msg-zg">Architekten</div>
+      <div class="msg-text">Machbar in deinem Arbeitsalltag. Nicht auf Knopfdruck, aber deutlich einfacher als behauptet. Hier ist die Methode, hier sind die Projekte.</div>
+    </div>
+    <div class="msg-item m3">
+      <div class="msg-zg">Beamte</div>
+      <div class="msg-text">Ihr habt Recht. Das ist machbar. Und ihr seid nicht allein — hier ist die Wissenschaft, hier sind die Projekte, hier ist das Netzwerk.</div>
+    </div>
+  </div>
+
+  <!-- FARBEN -->
+  <div class="cat-label">Primärfarben</div>
+  <div class="farben-row farben-row-p">
+    <div class="farbfeld f-dunkel">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">Primär · Dunkel</div><div class="farbfeld-name">Dunkel</div></div>
+      <div class="farbfeld-codes">HEX #1A1A1A<br>CMYK 0, 0, 0, 90<br>RGB 26, 26, 26</div>
+    </div>
+    <div class="farbfeld f-weiss">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">Primär · Hell</div><div class="farbfeld-name">Weiß</div></div>
+      <div class="farbfeld-codes">HEX #FFFFFF<br>CMYK 0, 0, 0, 0<br>RGB 255, 255, 255</div>
+    </div>
+  </div>
+
+  <div class="cat-label">Hintergrundfarben</div>
+  <div class="farben-row farben-row-bg">
+    <div class="farbfeld f-sand">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">BG · Warm</div><div class="farbfeld-name">Sand</div></div>
+      <div class="farbfeld-codes">HEX #B9B2A5<br>CMYK 0, 3, 12, 27<br>RGB 185, 178, 165</div>
+    </div>
+    <div class="farbfeld f-nebel">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">BG · Neutral</div><div class="farbfeld-name">Nebel</div></div>
+      <div class="farbfeld-codes">HEX #E7E2E6<br>CMYK 0, 2, 0, 9<br>RGB 231, 226, 230</div>
+    </div>
+    <div class="farbfeld f-himmel">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">BG · Kühl</div><div class="farbfeld-name">Himmel</div></div>
+      <div class="farbfeld-codes">HEX #BBCEDF<br>CMYK 14, 5, 0, 13<br>RGB 187, 206, 223</div>
+    </div>
+  </div>
+
+  <div class="cat-label">Highlightfarben</div>
+  <div class="farben-row farben-row-hl">
+    <div class="farbfeld f-magenta">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">Highlight · Primär</div><div class="farbfeld-name">Magenta</div></div>
+      <div class="farbfeld-codes">HEX #FF00BB<br>CMYK 0, 100, 27, 0<br>RGB 255, 0, 187</div>
+    </div>
+    <div class="farbfeld f-violett">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">Highlight · Sekundär</div><div class="farbfeld-name">Violett</div></div>
+      <div class="farbfeld-codes">HEX #8054F1<br>CMYK 46, 64, 0, 5<br>RGB 128, 84, 241</div>
+    </div>
+    <div class="farbfeld f-lime">
+      <div class="farbfeld-top"><div class="farbfeld-rolle">Highlight · Signal</div><div class="farbfeld-name">Lime</div></div>
+      <div class="farbfeld-codes">HEX #66FF00<br>CMYK 60, 0, 100, 0<br>RGB 102, 255, 0</div>
+    </div>
+  </div>
+
+  <!-- FARBPAARE -->
+  <div class="paare">
+    <div class="paar p1">
+      <div class="paar-text">Bauen gegen<br>die Klimakrise.</div>
+      <div class="paar-label">Dunkel + Magenta</div>
+    </div>
+    <div class="paar p2">
+      <div class="paar-text">80+<br>Projekte.</div>
+      <div class="paar-label">Magenta + Dunkel</div>
+    </div>
+    <div class="paar p3">
+      <div class="paar-text">CO₂<br>messbar.</div>
+      <div class="paar-label">Dunkel + Violett</div>
+    </div>
+    <div class="paar p4">
+      <div class="paar-text">Netto<br>Null.</div>
+      <div class="paar-label">Dunkel + Lime</div>
+    </div>
+    <div class="paar p5">
+      <div class="paar-text">Klimaneutral<br>2030.</div>
+      <div class="paar-label">Sand + Dunkel</div>
+    </div>
+  </div>
+
+  <!-- HERO STORY -->
+  <div class="hero-block">
+    <div>
+      <div class="hero-kicker">Kurzgeschichte</div>
+      <div class="hero-year">2020</div>
+    </div>
+    <div class="hero-story">
+      Ein Netzwerk entsteht — aus <strong>Frustration</strong>. Die österreichische Baubranche baut, als wäre 2030 noch weit weg. Eine Gruppe von Architekten, Bauträgern und Forschern beginnt zu rechnen. Projekt für Projekt. Balkendiagramm für Balkendiagramm. Sie entwickeln eine einheitliche Methode: Lebenszyklusanalyse — präzise, anwendbar, verteidigbar.<br><br>
+      Heute stehen <strong>80+ bilanzierte Projekte</strong> auf dem THG-Zielpfad. Das Netzwerk zählt 1000+ Klimafrühstücks-Teilnehmer. Und OIB Richtlinie 7 — die Bauordnung von 2028 — wird gerade geschrieben. Habitat 2030 sitzt am Tisch. <strong>Netto Null ist nicht Vision. Es ist Methode.</strong>
+    </div>
+  </div>
+
+  <!-- TYPOGRAFIE + CLAIMS -->
+  <div class="typo-block">
+    <div class="section-label">Typografie — Neue Haas Unica</div>
+    <div class="typo-display-big">Habitat<br>2030</div>
+    <div class="typo-weights">
+      <div class="tw"><span class="tw-label">Regular</span><span class="tw-sample tw-r">Klimaneutrales Bauen</span></div>
+      <div class="tw"><span class="tw-label">Medium</span><span class="tw-sample tw-m">Klimaneutrales Bauen</span></div>
+      <div class="tw"><span class="tw-label">Bold</span><span class="tw-sample tw-b">Klimaneutrales Bauen</span></div>
+      <div class="tw"><span class="tw-label">Extra Bold</span><span class="tw-sample tw-xb">Klimaneutrales Bauen</span></div>
+    </div>
+  </div>
+
+  <div class="claims-block">
+    <div>
+      <div class="section-label">Animierte Claims</div>
+      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">messbar.</span></div>
+      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">machbar.</span></div>
+      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">belegbar.</span></div>
+      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">jetzt.</span></div>
+    </div>
+    <div>
+      <div class="hauptsatz">Bauen gegen die Klimakrise.</div>
+      <div class="hauptsatz-label">Hauptsatz</div>
+    </div>
+  </div>
+
+
+  <!-- SOCIAL MEDIA -->
+  <div class="social-block">
+    <div class="section-label">Social Media — Profilbild · Avatar</div>
+    <div class="social-avatar-wrap">
+      <img src="social-avatar.png" style="width:100%; height:auto; display:block;" alt="Social Media Avatar">
+    </div>
+  </div>
+
+  <!-- ARCHETYPEN -->
+  <div class="arch-block">
+    <div class="arch-pie-col">
+      <div class="section-label" style="color:var(--sand); align-self:flex-start;">Brand-Archetypen</div>
+      <svg viewBox="0 0 200 200" width="180" height="180" style="overflow:visible;">
+        <path d="M 100,20 A 80,80 0 1 1 100,180 L 100,140 A 40,40 0 1 0 100,60 Z" fill="#FF00BB"/>
+        <path d="M 100,180 A 80,80 0 0 1 23.9,75.3 L 62.0,87.6 A 40,40 0 0 0 100,140 Z" fill="#8054F1"/>
+        <path d="M 23.9,75.3 A 80,80 0 0 1 100,20 L 100,60 A 40,40 0 0 0 62.0,87.6 Z" fill="#66FF00"/>
+        <text x="115" y="108" fill="#1A1A1A" font-size="11" font-weight="700" font-family="Helvetica Neue, Arial" text-anchor="middle">50%</text>
+        <text x="54"  y="148" fill="#fff"    font-size="11" font-weight="700" font-family="Helvetica Neue, Arial" text-anchor="middle">30%</text>
+        <text x="58"  y="62"  fill="#1A1A1A" font-size="11" font-weight="700" font-family="Helvetica Neue, Arial" text-anchor="middle">20%</text>
+      </svg>
+      <div class="arch-pie-legend">
+        <div class="arch-legend-item">
+          <div class="arch-legend-dot" style="background:#FF00BB;"></div>
+          <span>Der Weise</span>
+          <span class="arch-legend-pct">Primär · 50%</span>
+        </div>
+        <div class="arch-legend-item">
+          <div class="arch-legend-dot" style="background:#8054F1;"></div>
+          <span>Der Held</span>
+          <span class="arch-legend-pct">Sekundär · 30%</span>
+        </div>
+        <div class="arch-legend-item">
+          <div class="arch-legend-dot" style="background:#66FF00;"></div>
+          <span>Der Gefährte</span>
+          <span class="arch-legend-pct">Korrektiv · 20%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-tags-col">
+      <div class="arch-item arch-primary">
+        <div class="arch-header"><div class="arch-name">Der Weise</div><div class="arch-level">Primär</div></div>
+        <div class="arch-tags">
+          <span class="tag">Methodik</span><span class="tag">Daten</span><span class="tag">Analyse</span><span class="tag">Beweis</span><span class="tag">Präzision</span><span class="tag">Forschung</span><span class="tag">Fakten</span><span class="tag">Kompetenz</span><span class="tag">Wissenschaft</span><span class="tag">Anwendbarkeit</span>
+        </div>
+      </div>
+      <div class="arch-item arch-secondary">
+        <div class="arch-header"><div class="arch-name">Der Held</div><div class="arch-level">Sekundär</div></div>
+        <div class="arch-tags">
+          <span class="tag">Haltung</span><span class="tag">Gegenwind</span><span class="tag">Klarheit</span><span class="tag">Angreifbar</span><span class="tag">Mut</span><span class="tag">Position</span><span class="tag">Wirkung</span><span class="tag">Widerstand</span><span class="tag">Entschlossenheit</span><span class="tag">Durchsetzen</span>
+        </div>
+      </div>
+      <div class="arch-item arch-tertiary">
+        <div class="arch-header"><div class="arch-name">Der Gefährte</div><div class="arch-level">Korrektiv</div></div>
+        <div class="arch-tags">
+          <span class="tag">Einladung</span><span class="tag">Kooperation</span><span class="tag">Augenhöhe</span><span class="tag">Netzwerk</span><span class="tag">Gemeinschaft</span><span class="tag">Partnerschaft</span><span class="tag">Offenheit</span><span class="tag">Zugänglich</span><span class="tag">Geerdet</span><span class="tag">Vertrauen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Habitat 2030 — Brand Overview v0.4</span>
+    <span>Dunkel · Weiß · Sand · Nebel · Himmel · Magenta · Violett · Lime · Schrift: Neue Haas Unica</span>
+    <span>2026</span>
+  </div>
+
+</div>
+</body>
+</html>
