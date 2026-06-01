@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Habitat 2030 — Brand Overview</title>
+<title>Habitat 2030 — Brand Preview</title>
 <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
     --dunkel:  #1A1A1A;
     --weiss:   #FFFFFF;
@@ -12,335 +14,599 @@
     --nebel:   #E7E2E6;
     --himmel:  #BBCEDF;
     --magenta: #FF00BB;
-    --lime:    #66FF00;
     --violett: #8054F1;
-    --font: 'Neue Haas Unica', 'Helvetica Neue', Arial, sans-serif;
+    --lime:    #66FF00;
+    --font: 'Neue Haas Unica', 'Helvetica Neue Condensed', 'Helvetica Neue', Arial, sans-serif;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--sand); color: var(--dunkel); font-family: var(--font); font-size: 13px; line-height: 1.4; }
+  html { scroll-behavior: smooth; }
 
-  .page { max-width: 1280px; margin: 0 auto; padding: 48px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
+  body {
+    font-family: var(--font);
+    background: var(--weiss);
+    color: var(--dunkel);
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
 
-  /* HEADER */
-  .header { grid-column: 1/-1; display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 20px; border-bottom: 2px solid var(--dunkel); margin-bottom: 2px; }
-  .brand-name { font-size: 52px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--dunkel); }
-  .brand-meta { text-align: right; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.5; line-height: 1.8; }
+  /* ── HEADER ── */
+  .header {
+    background: var(--dunkel);
+    color: var(--weiss);
+    padding: 80px 60px 60px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 40px;
+    border-bottom: 3px solid var(--weiss);
+  }
+  .header-wordmark {
+    font-size: clamp(56px, 9vw, 112px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    text-transform: uppercase;
+  }
+  .header-wordmark em { color: var(--weiss); font-style: normal; }
+  .header-meta {
+    text-align: right;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,.35);
+    line-height: 2;
+  }
 
-  /* SECTION LABEL */
-  .section-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.45; margin-bottom: 16px; }
-  .cat-label { grid-column: 1/-1; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--dunkel); padding: 10px 0 5px; }
+  /* ── SECTION SYSTEM ── */
+  .s { padding: 64px 60px; border-bottom: 1px solid #e0e0e0; }
+  .s--tight  { padding: 48px 60px; }
+  .s--wide   { padding: 80px 60px; }
+  .s--dark   { background: var(--dunkel); color: var(--weiss); border-bottom: none; }
+  .s--sand   { background: var(--sand);   border-bottom: none; }
+  .s--lime   { background: var(--lime);   border-bottom: none; }
+  .s--magenta { background: var(--magenta); color: var(--dunkel); border-bottom: none; }
 
-  /* FARBEN */
-  .farben-row    { grid-column: 1/-1; display: grid; gap: 2px; margin-bottom: 2px; }
-  .farben-row-p  { grid-template-columns: repeat(2, 1fr); }
-  .farben-row-bg { grid-template-columns: repeat(3, 1fr); }
-  .farben-row-hl { grid-template-columns: repeat(3, 1fr); }
+  .s-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dunkel);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .s-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.15;
+  }
+  .s--dark .s-label   { color: var(--weiss); }
+  .s--sand .s-label   { color: var(--dunkel); }
+  .s--lime .s-label   { color: var(--dunkel); }
+  .s--magenta .s-label { color: var(--dunkel); }
 
-  .farbfeld { padding: 18px 16px; display: flex; flex-direction: column; justify-content: space-between; min-height: 148px; }
-  .farbfeld-top { display: flex; flex-direction: column; gap: 3px; }
-  .farbfeld-rolle { font-size: 9px; text-transform: uppercase; letter-spacing: 0.13em; opacity: 0.55; }
-  .farbfeld-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; }
-  .farbfeld-codes { font-size: 9.5px; font-family: 'SF Mono', monospace; line-height: 1.8; opacity: 0.75; }
+  /* ── ZIELGRUPPEN ── */
+  .zg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin: -1px;
+  }
+  .zg-card { padding: 36px 32px; min-height: 180px; }
+  .zg-idx  { font-size: 9px; text-transform: uppercase; letter-spacing: 0.16em; opacity: 0.45; margin-bottom: 12px; }
+  .zg-title { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+  .zg-text  { font-size: 13px; line-height: 1.65; opacity: 0.88; }
+  .zg1 { background: var(--dunkel); color: var(--sand); }
+  .zg1 .zg-title { color: var(--weiss); }
+  .zg2 { background: var(--magenta); color: var(--dunkel); }
+  .zg3 { background: var(--lime); color: var(--dunkel); }
 
-  .f-dunkel  { background: #1A1A1A; color: #B9B2A5; }
-  .f-weiss   { background: #FFFFFF; color: #1A1A1A; border: 1px solid rgba(26,26,26,.15); }
-  .f-sand    { background: #B9B2A5; color: #1A1A1A; border: 1px solid rgba(26,26,26,.15); }
-  .f-nebel   { background: #E7E2E6; color: #1A1A1A; border: 1px solid rgba(26,26,26,.12); }
-  .f-himmel  { background: #BBCEDF; color: #1A1A1A; border: 1px solid rgba(26,26,26,.12); }
-  .f-magenta { background: #FF00BB; color: #1A1A1A; }
-  .f-violett { background: #8054F1; color: #fff; }
-  .f-lime    { background: #66FF00; color: #1A1A1A; }
+  /* ── FARBEN ── */
+  .farb-table { width: 100%; border-collapse: collapse; }
+  .farb-table th {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em;
+    color: #999; font-weight: 600; text-align: left;
+    padding: 0 16px 12px 0; border-bottom: 1px solid #e0e0e0;
+  }
+  .farb-table td {
+    padding: 14px 16px 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+  }
+  .farb-table tr:last-child td { border-bottom: none; }
+  .farb-swatch-cell { width: 48px; }
+  .farb-dot {
+    width: 36px; height: 36px;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,.1);
+  }
+  .farb-name { font-size: 13px; font-weight: 700; }
+  .farb-hex  { font-family: 'SF Mono', monospace; font-size: 11px; color: #999; }
+  .farb-rolle { font-size: 10px; color: #bbb; text-transform: uppercase; letter-spacing: 0.06em; }
+  .farb-cmyk { font-family: 'SF Mono', monospace; font-size: 10px; color: #ccc; }
+  .farb-badge {
+    display: inline-block;
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; padding: 3px 8px;
+    background: #f3f3f3; color: #666;
+  }
 
-  /* FARBPAARE */
-  .paare { grid-column: 1/-1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-bottom: 2px; }
-  .paar { padding: 22px 18px; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px; }
-  .paar-text { font-size: clamp(18px, 2vw, 26px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.0; }
-  .paar-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5; }
-  .p1 { background: var(--dunkel);  color: var(--magenta); }
-  .p2 { background: var(--magenta); color: var(--dunkel); }
-  .p3 { background: var(--dunkel);  color: var(--violett); }
-  .p4 { background: var(--dunkel);  color: var(--lime); }
-  .p5 { background: var(--sand);    color: var(--dunkel); border: 1px solid rgba(26,26,26,.12); }
+  /* ── FARBPAARE ── */
+  .paare {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+  }
+  .paar { padding: 28px 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 130px; }
+  .paar-text { font-size: clamp(15px, 1.5vw, 21px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; text-transform: uppercase; }
+  .paar-meta { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.45; margin-top: 14px; }
+  .p1 { background: #1A1A1A; color: #FF00BB; }
+  .p2 { background: #FF00BB; color: #1A1A1A; }
+  .p3 { background: #1A1A1A; color: #8054F1; }
+  .p4 { background: #1A1A1A; color: #66FF00; }
+  .p5 { background: #B9B2A5; color: #1A1A1A; }
 
-  /* HERO */
-  .hero-block { grid-column: 1/-1; background: var(--dunkel); color: var(--sand); padding: 48px; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: end; margin-bottom: 0; }
-  .hero-kicker { font-size: 9px; text-transform: uppercase; letter-spacing: 0.18em; opacity: 0.45; margin-bottom: 16px; }
-  .hero-year { font-size: 100px; font-weight: 800; letter-spacing: -0.04em; line-height: 0.85; color: var(--magenta); }
-  .hero-story { font-size: clamp(15px, 1.6vw, 19px); line-height: 1.55; font-weight: 400; opacity: 0.85; }
-  .hero-story strong { color: var(--magenta); font-weight: 700; }
+  /* ── KURZGESCHICHTE ── */
+  .hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+  }
+  .hero-left {
+    padding: 0 64px 0 0;
+    border-right: 2px solid var(--magenta);
+    margin-right: 64px;
+  }
+  .hero-year {
+    font-size: clamp(80px, 12vw, 160px);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.82;
+    color: var(--weiss);
+    white-space: nowrap;
+  }
+  .hero-kicker {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.16em;
+    color: rgba(255,255,255,.35); margin-bottom: 16px;
+  }
+  .hero-story { font-size: clamp(14px, 1.4vw, 17px); line-height: 1.75; color: rgba(255,255,255,.8); }
+  .hero-story strong { color: var(--weiss); font-weight: 700; }
 
-  /* TYPOGRAFIE */
-  .typo-block { grid-column: 1/7; background: var(--lime); color: var(--dunkel); padding: 40px; }
-  .typo-weights { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; border-top: 1px solid rgba(26,26,26,.15); padding-top: 16px; }
-  .tw { display: flex; align-items: baseline; gap: 16px; padding: 6px 0; border-bottom: 1px solid rgba(26,26,26,.08); }
-  .tw-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.4; width: 80px; flex-shrink: 0; }
-  .tw-sample { line-height: 1; }
-  .tw-r  { font-weight: 400; font-size: 22px; }
-  .tw-m  { font-weight: 500; font-size: 22px; }
-  .tw-b  { font-weight: 700; font-size: 22px; }
-  .tw-xb { font-weight: 800; font-size: 22px; }
-  .typo-display-big { font-size: clamp(48px, 6vw, 76px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.9; margin: 16px 0 8px; }
+  /* ── TYPOGRAFIE ── */
+  .typo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 
-  /* CLAIMS */
-  .claims-block { grid-column: 7/-1; background: var(--magenta); color: var(--dunkel); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
-  .claim-line { font-size: clamp(14px, 1.7vw, 20px); font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.1; padding: 11px 0; border-bottom: 1px solid rgba(26,26,26,.15); display: flex; gap: 6px; flex-wrap: wrap; align-items: baseline; }
+  .typo-left { padding: 40px; background: var(--lime); }
+  .typo-display { font-size: clamp(52px, 6.5vw, 84px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.88; text-transform: uppercase; margin: 16px 0 28px; }
+  .typo-weights { border-top: 1px solid rgba(26,26,26,.15); padding-top: 16px; }
+  .tw { display: flex; align-items: baseline; gap: 20px; padding: 8px 0; border-bottom: 1px solid rgba(26,26,26,.08); }
+  .tw:last-child { border-bottom: none; }
+  .tw-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; min-width: 72px; flex-shrink: 0; }
+  .tw-r  { font-weight: 400; font-size: 21px; }
+  .tw-m  { font-weight: 500; font-size: 21px; }
+  .tw-b  { font-weight: 700; font-size: 21px; }
+  .tw-xb { font-weight: 800; font-size: 21px; }
+
+  .claims-right { padding: 40px; background: var(--magenta); color: var(--dunkel); display: flex; flex-direction: column; justify-content: space-between; }
+  .claim-line {
+    font-size: clamp(12px, 1.35vw, 16px); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0;
+    line-height: 1.05; padding: 12px 0;
+    border-bottom: 1px solid rgba(26,26,26,.12);
+    display: flex; gap: 6px; flex-wrap: wrap; align-items: baseline;
+  }
   .claim-line:last-of-type { border-bottom: none; }
-  .claim-var { background: var(--dunkel); color: var(--magenta); padding: 1px 7px; font-size: 0.88em; }
-  .hauptsatz { font-size: clamp(18px, 2.5vw, 30px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin-top: 20px; }
-  .hauptsatz-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.45; margin-top: 5px; }
+  .claim-var { background: var(--dunkel); color: var(--magenta); padding: 2px 8px; font-size: .88em; }
+  .hauptsatz-wrap { margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(26,26,26,.15); }
+  .hauptsatz { font-size: clamp(20px, 2.5vw, 32px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.95; }
+  .hauptsatz-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.16em; opacity: 0.45; margin-top: 8px; }
 
-  /* LOGO */
-  .logo-block { grid-column: 1/7; background: var(--sand); padding: 36px; border: 1px solid rgba(26,26,26,.1); }
-  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 4px; }
-  .logo-demo { padding: 16px 20px; font-size: 17px; font-weight: 800; display: flex; flex-direction: column; gap: 5px; }
-  .logo-tag-small { font-size: 9px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; }
-  .ld1 { background: var(--dunkel);  color: var(--sand); }
-  .ld2 { background: var(--dunkel);  color: var(--magenta); }
+  /* ── LOGO ── */
+  .logo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .logo-demo { padding: 32px 28px 24px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 140px; }
+  .logo-wordmark { display: flex; flex-direction: column; }
+  .logo-line { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; text-transform: uppercase; }
+  .logo-variant { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.35; margin-top: 10px; }
+  .ld1 { background: var(--dunkel); color: var(--sand); }
+  .ld2 { background: var(--dunkel); }
   .ld3 { background: var(--magenta); color: var(--dunkel); }
-  .ld4 { background: var(--lime);    color: var(--dunkel); }
+  .ld4 { background: var(--lime); color: var(--dunkel); }
 
-  /* SOCIAL MEDIA */
-  .social-block { grid-column: 1/-1; background: var(--nebel); padding: 36px; display: flex; flex-direction: column; gap: 16px; }
-  .social-avatar-wrap { display: flex; align-items: center; gap: 32px; }
-  .avatar-tag { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.45; }
+  /* ── ARCHETYPEN ── */
+  .arch-wrap { display: grid; grid-template-columns: 220px 1fr 1fr 1fr; gap: 56px; align-items: start; }
+  .arch-chart { display: flex; flex-direction: column; gap: 20px; }
+  .arch-legend { display: flex; flex-direction: column; gap: 10px; }
+  .arch-legend-item { display: flex; align-items: center; gap: 10px; font-size: 11px; color: rgba(255,255,255,.7); }
+  .arch-legend-dot { width: 8px; height: 8px; flex-shrink: 0; }
+  .arch-legend-pct { margin-left: auto; font-size: 10px; opacity: .5; }
+  .arch-col { display: flex; flex-direction: column; gap: 12px; }
+  .arch-col-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .arch-primary   .arch-col-title { color: var(--magenta); }
+  .arch-secondary .arch-col-title { color: var(--violett); }
+  .arch-tertiary  .arch-col-title { color: var(--lime); }
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 9px; font-weight: 600; padding: 4px 9px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .arch-primary   .tag { border: 1px solid rgba(255,0,187,.35); color: var(--magenta); }
+  .arch-secondary .tag { border: 1px solid rgba(128,84,241,.35); color: var(--violett); }
+  .arch-tertiary  .tag { border: 1px solid rgba(102,255,0,.3); color: var(--lime); }
 
-  /* ARCHETYPEN */
-  .arch-block { grid-column: 7/-1; background: var(--dunkel); color: var(--sand); padding: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-  .arch-pie-col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-  .arch-pie-legend { width: 100%; display: flex; flex-direction: column; gap: 8px; }
-  .arch-legend-item { display: flex; align-items: center; gap: 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
-  .arch-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .arch-legend-pct { margin-left: auto; opacity: 0.5; font-size: 9px; }
-  .arch-tags-col { display: flex; flex-direction: column; gap: 16px; }
-  .arch-item { }
-  .arch-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
-  .arch-name { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
-  .arch-level { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; }
-  .arch-primary .arch-name   { color: var(--magenta); }
-  .arch-secondary .arch-name { color: var(--violett); }
-  .arch-tertiary .arch-name  { color: var(--lime); }
-  .arch-tags { display: flex; flex-wrap: wrap; gap: 3px; }
-  .tag { font-size: 8.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 7px; border: 1px solid; }
-  .arch-primary .tag   { border-color: rgba(255,0,187,.35);  color: var(--magenta); }
-  .arch-secondary .tag { border-color: rgba(128,84,241,.35); color: var(--violett); }
-  .arch-tertiary .tag  { border-color: rgba(102,255,0,.35);  color: var(--lime); }
+  /* ── ACCESSIBILITY ── */
+  .a11y-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+  .a11y-card { }
+  .a11y-preview {
+    padding: 24px 18px;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+  }
+  .a11y-sample { font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
+  .a11y-data { padding: 14px 18px; background: #f5f5f5; border-top: 1px solid #e8e8e8; }
+  .a11y-pair { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+  .a11y-vals { font-family: 'SF Mono', monospace; font-size: 10px; color: #999; }
+  .a11y-status { font-size: 10px; font-weight: 700; margin-top: 5px; }
+  .status-ok     { color: #2a7a00; }
+  .status-warn   { color: #b25000; }
+  .status-fail   { color: #c00000; }
 
-  /* ZIELGRUPPEN */
-  .zg-row { grid-column: 1/-1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .msg-item { padding: 28px; }
-  .m1 { background: var(--dunkel);  color: var(--sand); }
-  .m2 { background: var(--magenta); color: var(--dunkel); }
-  .m3 { background: var(--lime);    color: var(--dunkel); }
-  .msg-zg { font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.5; margin-bottom: 12px; }
-  .msg-text { font-size: 14px; line-height: 1.55; font-weight: 500; }
-
-  /* FOOTER */
-  .footer { grid-column: 1/-1; border-top: 1px solid rgba(26,26,26,.2); padding-top: 14px; display: flex; justify-content: space-between; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.35; margin-top: 2px; }
+  /* ── FOOTER ── */
+  .footer {
+    padding: 28px 60px;
+    background: var(--dunkel);
+    border-top: 2px solid rgba(255,255,255,.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,.25);
+  }
+  .footer-mark { color: var(--magenta); font-weight: 700; }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="brand-name">Habitat 2030</div>
-    <div class="brand-meta">Brand Overview — Stand 18.05.2026<br>In Bearbeitung</div>
+<!-- ── HEADER ── -->
+<div class="header">
+  <div>
+    <div class="header-wordmark">Habitat<br><em>2030</em></div>
   </div>
-
-  <!-- ZIELGRUPPEN -->
-  <div class="cat-label">Zielgruppen</div>
-  <div class="zg-row">
-    <div class="msg-item m1">
-      <div class="msg-zg">Bauträger</div>
-      <div class="msg-text">Klimaneutrales Bauen ist machbar. Um 20–30% besser als bisher — ohne das doppelt zu zahlen. Hier sind 80+ Projekte als Beweis.</div>
-    </div>
-    <div class="msg-item m2">
-      <div class="msg-zg">Architekten</div>
-      <div class="msg-text">Machbar in deinem Arbeitsalltag. Nicht auf Knopfdruck, aber deutlich einfacher als behauptet. Hier ist die Methode, hier sind die Projekte.</div>
-    </div>
-    <div class="msg-item m3">
-      <div class="msg-zg">Beamte</div>
-      <div class="msg-text">Ihr habt Recht. Das ist machbar. Und ihr seid nicht allein — hier ist die Wissenschaft, hier sind die Projekte, hier ist das Netzwerk.</div>
-    </div>
+  <div class="header-meta">
+    Brand Preview<br>
+    2026-06-01<br>
+    In Bearbeitung
   </div>
+</div>
 
-  <!-- FARBEN -->
-  <div class="cat-label">Primärfarben</div>
-  <div class="farben-row farben-row-p">
-    <div class="farbfeld f-dunkel">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">Primär · Dunkel</div><div class="farbfeld-name">Dunkel</div></div>
-      <div class="farbfeld-codes">HEX #1A1A1A<br>CMYK 0, 0, 0, 90<br>RGB 26, 26, 26</div>
+<!-- ── ZIELGRUPPEN ── -->
+<div class="s s--tight" style="padding-left:0;padding-right:0;padding-top:0;border-bottom:none;">
+  <div class="zg-grid">
+    <div class="zg-card zg1">
+      <div class="zg-idx">Zielgruppe 01</div>
+      <div class="zg-title">Bauträger</div>
+      <div class="zg-text">Klimaneutrales Bauen ist machbar. Um 20–30% besser als bisher — ohne das doppelt zu zahlen. Hier sind 80+ Projekte als Beweis.</div>
     </div>
-    <div class="farbfeld f-weiss">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">Primär · Hell</div><div class="farbfeld-name">Weiß</div></div>
-      <div class="farbfeld-codes">HEX #FFFFFF<br>CMYK 0, 0, 0, 0<br>RGB 255, 255, 255</div>
+    <div class="zg-card zg2">
+      <div class="zg-idx">Zielgruppe 02</div>
+      <div class="zg-title">Architekten</div>
+      <div class="zg-text">Machbar in deinem Arbeitsalltag. Nicht auf Knopfdruck, aber deutlich einfacher als behauptet. Hier ist die Methode, hier sind die Projekte.</div>
+    </div>
+    <div class="zg-card zg3">
+      <div class="zg-idx">Zielgruppe 03</div>
+      <div class="zg-title">Beamte</div>
+      <div class="zg-text">Ihr habt Recht. Das ist machbar. Und ihr seid nicht allein — hier ist die Wissenschaft, hier sind die Projekte, hier ist das Netzwerk.</div>
     </div>
   </div>
+</div>
 
-  <div class="cat-label">Hintergrundfarben</div>
-  <div class="farben-row farben-row-bg">
-    <div class="farbfeld f-sand">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">BG · Warm</div><div class="farbfeld-name">Sand</div></div>
-      <div class="farbfeld-codes">HEX #B9B2A5<br>CMYK 0, 3, 12, 27<br>RGB 185, 178, 165</div>
-    </div>
-    <div class="farbfeld f-nebel">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">BG · Neutral</div><div class="farbfeld-name">Nebel</div></div>
-      <div class="farbfeld-codes">HEX #E7E2E6<br>CMYK 0, 2, 0, 9<br>RGB 231, 226, 230</div>
-    </div>
-    <div class="farbfeld f-himmel">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">BG · Kühl</div><div class="farbfeld-name">Himmel</div></div>
-      <div class="farbfeld-codes">HEX #BBCEDF<br>CMYK 14, 5, 0, 13<br>RGB 187, 206, 223</div>
-    </div>
-  </div>
+<!-- ── FARBEN ── -->
+<div class="s">
+  <div class="s-label">Farbpalette</div>
+  <table class="farb-table">
+    <thead>
+      <tr>
+        <th class="farb-swatch-cell"></th>
+        <th>Name</th>
+        <th>HEX</th>
+        <th>Rolle</th>
+        <th>CMYK</th>
+        <th>Einsatz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="farb-dot" style="background:#1A1A1A;"></span></td>
+        <td><div class="farb-name">Dunkel</div></td>
+        <td><div class="farb-hex">#1A1A1A</div></td>
+        <td><div class="farb-rolle">Primär · Basis</div></td>
+        <td><div class="farb-cmyk">0, 0, 0, 90</div></td>
+        <td><span class="farb-badge">Text · Fläche</span></td>
+      </tr>
+      <tr>
+        <td><span class="farb-dot" style="background:#FFFFFF; border:1px solid #e0e0e0;"></span></td>
+        <td><div class="farb-name">Weiß</div></td>
+        <td><div class="farb-hex">#FFFFFF</div></td>
+        <td><div class="farb-rolle">Primär · Hell</div></td>
+        <td><div class="farb-cmyk">0, 0, 0, 0</div></td>
+        <td><span class="farb-badge">Kontrast</span></td>
+      </tr>
+      <tr>
+        <td><span class="farb-dot" style="background:#B9B2A5;"></span></td>
+        <td><div class="farb-name">Sand</div></td>
+        <td><div class="farb-hex">#B9B2A5</div></td>
+        <td><div class="farb-rolle">BG · Warm · Standard</div></td>
+        <td><div class="farb-cmyk">0, 3, 12, 27</div></td>
+        <td><span class="farb-badge">Hintergrund</span></td>
+      </tr>
+      <tr>
+        <td><span class="farb-dot" style="background:#E7E2E6;"></span></td>
+        <td><div class="farb-name">Nebel</div></td>
+        <td><div class="farb-hex">#E7E2E6</div></td>
+        <td><div class="farb-rolle">BG · Neutral</div></td>
+        <td><div class="farb-cmyk">0, 2, 0, 9</div></td>
+        <td><span class="farb-badge">Hintergrund</span></td>
+      </tr>
+      <tr>
+        <td><span class="farb-dot" style="background:#BBCEDF;"></span></td>
+        <td><div class="farb-name">Himmel</div></td>
+        <td><div class="farb-hex">#BBCEDF</div></td>
+        <td><div class="farb-rolle">BG · Kühl</div></td>
+        <td><div class="farb-cmyk">14, 5, 0, 13</div></td>
+        <td><span class="farb-badge">Hintergrund</span></td>
+      </tr>
+      <tr>
+        <td><span class="farb-dot" style="background:#FF00BB;"></span></td>
+        <td><div class="farb-name">Magenta</div></td>
+        <td><div class="farb-hex">#FF00BB</div></td>
+        <td><div class="farb-rolle">Highlight · Primär</div></td>
+        <td><div class="farb-cmyk">0, 100, 27, 0</div></td>
+        <td><span class="farb-badge">Akzent · Energie</span></td>
+      </tr>
+      <tr>
+        <td><span class="farb-dot" style="background:#8054F1;"></span></td>
+        <td><div class="farb-name">Violett</div></td>
+        <td><div class="farb-hex">#8054F1</div></td>
+        <td><div class="farb-rolle">Highlight · Sekundär</div></td>
+        <td><div class="farb-cmyk">46, 64, 0, 5</div></td>
+        <td><span class="farb-badge">Nur Display</span></td>
+      </tr>
+      <tr>
+        <td><span class="farb-dot" style="background:#66FF00;"></span></td>
+        <td><div class="farb-name">Lime</div></td>
+        <td><div class="farb-hex">#66FF00</div></td>
+        <td><div class="farb-rolle">Highlight · Signal</div></td>
+        <td><div class="farb-cmyk">60, 0, 100, 0</div></td>
+        <td><span class="farb-badge">CTA · Signal</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <div class="cat-label">Highlightfarben</div>
-  <div class="farben-row farben-row-hl">
-    <div class="farbfeld f-magenta">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">Highlight · Primär</div><div class="farbfeld-name">Magenta</div></div>
-      <div class="farbfeld-codes">HEX #FF00BB<br>CMYK 0, 100, 27, 0<br>RGB 255, 0, 187</div>
-    </div>
-    <div class="farbfeld f-violett">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">Highlight · Sekundär</div><div class="farbfeld-name">Violett</div></div>
-      <div class="farbfeld-codes">HEX #8054F1<br>CMYK 46, 64, 0, 5<br>RGB 128, 84, 241</div>
-    </div>
-    <div class="farbfeld f-lime">
-      <div class="farbfeld-top"><div class="farbfeld-rolle">Highlight · Signal</div><div class="farbfeld-name">Lime</div></div>
-      <div class="farbfeld-codes">HEX #66FF00<br>CMYK 60, 0, 100, 0<br>RGB 102, 255, 0</div>
-    </div>
-  </div>
-
-  <!-- FARBPAARE -->
+<!-- ── FARBPAARE ── -->
+<div class="s" style="padding-left:0;padding-right:0;padding-top:48px;">
+  <div class="s-label" style="padding-left:60px;">Farbpaare</div>
   <div class="paare">
     <div class="paar p1">
       <div class="paar-text">Bauen gegen<br>die Klimakrise.</div>
-      <div class="paar-label">Dunkel + Magenta</div>
+      <div class="paar-meta">Dunkel + Magenta</div>
     </div>
     <div class="paar p2">
       <div class="paar-text">80+<br>Projekte.</div>
-      <div class="paar-label">Magenta + Dunkel</div>
+      <div class="paar-meta">Magenta + Dunkel</div>
     </div>
     <div class="paar p3">
       <div class="paar-text">CO₂<br>messbar.</div>
-      <div class="paar-label">Dunkel + Violett</div>
+      <div class="paar-meta">Dunkel + Violett</div>
     </div>
     <div class="paar p4">
       <div class="paar-text">Netto<br>Null.</div>
-      <div class="paar-label">Dunkel + Lime</div>
+      <div class="paar-meta">Dunkel + Lime</div>
     </div>
     <div class="paar p5">
       <div class="paar-text">Klimaneutral<br>2030.</div>
-      <div class="paar-label">Sand + Dunkel</div>
+      <div class="paar-meta">Sand + Dunkel</div>
     </div>
   </div>
+</div>
 
-  <!-- HERO STORY -->
-  <div class="hero-block">
-    <div>
-      <div class="hero-kicker">Kurzgeschichte</div>
+<!-- ── KURZGESCHICHTE ── -->
+<div class="s s--dark s--wide">
+  <div class="s-label">Kurzgeschichte</div>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-kicker">Habitat 2030</div>
       <div class="hero-year">2030</div>
     </div>
-    <div class="hero-story">
-      Ein Netzwerk entsteht — aus <strong>Frustration</strong>. Die österreichische Baubranche baut, als wäre 2030 noch weit weg. Eine Gruppe von Architekten, Bauträgern und Forschern beginnt zu rechnen. Projekt für Projekt. Balkendiagramm für Balkendiagramm. Sie entwickeln eine einheitliche Methode: Lebenszyklusanalyse — präzise, anwendbar, verteidigbar.<br><br>
-      Heute stehen <strong>80+ bilanzierte Projekte</strong> auf dem THG-Zielpfad. Das Netzwerk zählt 1000+ Klimafrühstücks-Teilnehmer. Und OIB Richtlinie 7 — die Bauordnung von 2028 — wird gerade geschrieben. Habitat 2030 sitzt am Tisch. <strong>Netto Null ist nicht Vision. Es ist Methode.</strong>
-    </div>
-  </div>
-
-  <!-- TYPOGRAFIE + CLAIMS -->
-  <div class="typo-block">
-    <div class="section-label">Typografie — Neue Haas Unica</div>
-    <div class="typo-display-big">Habitat<br>2030</div>
-    <div class="typo-weights">
-      <div class="tw"><span class="tw-label">Regular</span><span class="tw-sample tw-r">Klimaneutrales Bauen</span></div>
-      <div class="tw"><span class="tw-label">Medium</span><span class="tw-sample tw-m">Klimaneutrales Bauen</span></div>
-      <div class="tw"><span class="tw-label">Bold</span><span class="tw-sample tw-b">Klimaneutrales Bauen</span></div>
-      <div class="tw"><span class="tw-label">Extra Bold</span><span class="tw-sample tw-xb">Klimaneutrales Bauen</span></div>
-    </div>
-  </div>
-
-  <div class="claims-block">
     <div>
-      <div class="section-label">Animierte Claims</div>
-      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">messbar.</span></div>
-      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">machbar.</span></div>
-      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">belegbar.</span></div>
-      <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">jetzt.</span></div>
-    </div>
-    <div>
-      <div class="hauptsatz">Bauen gegen die Klimakrise.</div>
-      <div class="hauptsatz-label">Hauptsatz</div>
-    </div>
-  </div>
-
-
-  <!-- SOCIAL MEDIA -->
-  <div class="social-block">
-    <div class="section-label">Social Media — Profilbild · Avatar</div>
-    <div class="social-avatar-wrap">
-      <img src="social-avatar.png" style="width:100%; height:auto; display:block;" alt="Social Media Avatar">
-    </div>
-  </div>
-
-  <!-- ARCHETYPEN -->
-  <div class="arch-block">
-    <div class="arch-pie-col">
-      <div class="section-label" style="color:var(--sand); align-self:flex-start;">Brand-Archetypen</div>
-      <svg viewBox="0 0 200 200" width="180" height="180" style="overflow:visible;">
-        <path d="M 100,20 A 80,80 0 1 1 100,180 L 100,140 A 40,40 0 1 0 100,60 Z" fill="#FF00BB"/>
-        <path d="M 100,180 A 80,80 0 0 1 23.9,75.3 L 62.0,87.6 A 40,40 0 0 0 100,140 Z" fill="#8054F1"/>
-        <path d="M 23.9,75.3 A 80,80 0 0 1 100,20 L 100,60 A 40,40 0 0 0 62.0,87.6 Z" fill="#66FF00"/>
-        <text x="115" y="108" fill="#1A1A1A" font-size="11" font-weight="700" font-family="Helvetica Neue, Arial" text-anchor="middle">50%</text>
-        <text x="54"  y="148" fill="#fff"    font-size="11" font-weight="700" font-family="Helvetica Neue, Arial" text-anchor="middle">30%</text>
-        <text x="58"  y="62"  fill="#1A1A1A" font-size="11" font-weight="700" font-family="Helvetica Neue, Arial" text-anchor="middle">20%</text>
-      </svg>
-      <div class="arch-pie-legend">
-        <div class="arch-legend-item">
-          <div class="arch-legend-dot" style="background:#FF00BB;"></div>
-          <span>Der Weise</span>
-          <span class="arch-legend-pct">Primär · 50%</span>
-        </div>
-        <div class="arch-legend-item">
-          <div class="arch-legend-dot" style="background:#8054F1;"></div>
-          <span>Der Held</span>
-          <span class="arch-legend-pct">Sekundär · 30%</span>
-        </div>
-        <div class="arch-legend-item">
-          <div class="arch-legend-dot" style="background:#66FF00;"></div>
-          <span>Der Gefährte</span>
-          <span class="arch-legend-pct">Korrektiv · 20%</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="arch-tags-col">
-      <div class="arch-item arch-primary">
-        <div class="arch-header"><div class="arch-name">Der Weise</div><div class="arch-level">Primär</div></div>
-        <div class="arch-tags">
-          <span class="tag">Methodik</span><span class="tag">Daten</span><span class="tag">Analyse</span><span class="tag">Beweis</span><span class="tag">Präzision</span><span class="tag">Forschung</span><span class="tag">Fakten</span><span class="tag">Kompetenz</span><span class="tag">Wissenschaft</span><span class="tag">Anwendbarkeit</span>
-        </div>
-      </div>
-      <div class="arch-item arch-secondary">
-        <div class="arch-header"><div class="arch-name">Der Held</div><div class="arch-level">Sekundär</div></div>
-        <div class="arch-tags">
-          <span class="tag">Haltung</span><span class="tag">Gegenwind</span><span class="tag">Klarheit</span><span class="tag">Angreifbar</span><span class="tag">Mut</span><span class="tag">Position</span><span class="tag">Wirkung</span><span class="tag">Widerstand</span><span class="tag">Entschlossenheit</span><span class="tag">Durchsetzen</span>
-        </div>
-      </div>
-      <div class="arch-item arch-tertiary">
-        <div class="arch-header"><div class="arch-name">Der Gefährte</div><div class="arch-level">Korrektiv</div></div>
-        <div class="arch-tags">
-          <span class="tag">Einladung</span><span class="tag">Kooperation</span><span class="tag">Augenhöhe</span><span class="tag">Netzwerk</span><span class="tag">Gemeinschaft</span><span class="tag">Partnerschaft</span><span class="tag">Offenheit</span><span class="tag">Zugänglich</span><span class="tag">Geerdet</span><span class="tag">Vertrauen</span>
-        </div>
+      <div class="hero-story">
+        Ein Netzwerk entsteht — aus <strong>Frustration</strong>. Die österreichische Baubranche baut, als wäre 2030 noch weit weg. Eine Gruppe von Architekten, Bauträgern und Forschern beginnt zu rechnen. Projekt für Projekt. Balkendiagramm für Balkendiagramm. Sie entwickeln eine einheitliche Methode: Lebenszyklusanalyse — präzise, anwendbar, verteidigbar.<br><br>
+        Heute stehen <strong>80+ bilanzierte Projekte</strong> auf dem THG-Zielpfad. Das Netzwerk zählt <strong>1000+ Klimafrühstücks-Teilnehmer</strong>. Und OIB Richtlinie 7 — die Bauordnung von 2028 — wird gerade geschrieben. Habitat 2030 sitzt am Tisch. <strong>Netto Null ist nicht Vision. Es ist Methode.</strong>
       </div>
     </div>
   </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <span>Habitat 2030 — Brand Overview v0.4</span>
-    <span>Dunkel · Weiß · Sand · Nebel · Himmel · Magenta · Violett · Lime · Schrift: Neue Haas Unica</span>
-    <span>2026</span>
-  </div>
-
 </div>
+
+<!-- ── TYPOGRAFIE + CLAIMS ── -->
+<div class="s" style="padding:0; border-bottom:1px solid #e0e0e0;">
+  <div class="typo-wrap">
+    <div class="typo-left">
+      <div class="s-label">Typografie — Neue Haas Unica</div>
+      <div class="typo-display">Habitat<br>2030</div>
+      <div class="typo-weights">
+        <div class="tw"><span class="tw-label">Regular</span><span class="tw-r">Klimaneutrales Bauen</span></div>
+        <div class="tw"><span class="tw-label">Medium</span><span class="tw-m">Klimaneutrales Bauen</span></div>
+        <div class="tw"><span class="tw-label">Bold</span><span class="tw-b">Klimaneutrales Bauen</span></div>
+        <div class="tw"><span class="tw-label">Extra Bold</span><span class="tw-xb">Klimaneutrales Bauen</span></div>
+      </div>
+    </div>
+    <div class="claims-right">
+      <div>
+        <div class="s-label">Claims</div>
+        <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">messbar.</span></div>
+        <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">machbar.</span></div>
+        <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">belegbar.</span></div>
+        <div class="claim-line">Klimaneutrales Bauen ist <span class="claim-var">jetzt.</span></div>
+        <div class="claim-line">Bauen gegen die Klimakrise.</div>
+      </div>
+      <div class="hauptsatz-wrap">
+        <div class="hauptsatz">Bauen gegen<br>die Klimakrise.</div>
+        <div class="hauptsatz-label">Hauptsatz</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── LOGO ── -->
+<div class="s" style="padding-bottom:0; border-bottom:none;">
+  <div class="s-label">Logo-Varianten</div>
+</div>
+<div class="logo-grid">
+  <div class="logo-demo ld1">
+    <div class="logo-wordmark">
+      <span class="logo-line">Habitat</span>
+      <span class="logo-line">2030</span>
+    </div>
+    <div class="logo-variant">Dunkel · Sand</div>
+  </div>
+  <div class="logo-demo ld2">
+    <div class="logo-wordmark">
+      <span class="logo-line" style="color:var(--sand)">Habitat</span>
+      <span class="logo-line" style="color:var(--magenta)">2030</span>
+    </div>
+    <div class="logo-variant" style="color:var(--sand)">Dunkel · Magenta</div>
+  </div>
+  <div class="logo-demo ld3">
+    <div class="logo-wordmark">
+      <span class="logo-line">Habitat</span>
+      <span class="logo-line">2030</span>
+    </div>
+    <div class="logo-variant">Magenta · Dunkel</div>
+  </div>
+  <div class="logo-demo ld4">
+    <div class="logo-wordmark">
+      <span class="logo-line">Habitat</span>
+      <span class="logo-line">2030</span>
+    </div>
+    <div class="logo-variant">Lime · Dunkel</div>
+  </div>
+</div>
+
+<!-- ── ARCHETYPEN ── -->
+<div class="s s--dark s--wide" style="margin-top:2px;">
+  <div class="s-label">Brand-Archetypen</div>
+  <div class="arch-wrap">
+    <div class="arch-chart">
+      <svg viewBox="0 0 200 200" width="180" height="180">
+        <!-- Magenta 50%: top (100,22) → bottom (100.1,178), clockwise, large arc -->
+        <path d="M 100,22 A 78,78 0 1,1 100.1,178 L 100.1,142 A 42,42 0 1,0 100,58 Z" fill="#FF00BB"/>
+        <!-- Violett 30%: bottom (100.1,178) → 288° from top (25.8,75.9) -->
+        <path d="M 100.1,178 A 78,78 0 0,1 25.8,75.9 L 60.1,87.0 A 42,42 0 0,0 100.1,142 Z" fill="#8054F1"/>
+        <!-- Lime 20%: 288° (25.8,75.9) → top (100,22) -->
+        <path d="M 25.8,75.9 A 78,78 0 0,1 100,22 L 100,58 A 42,42 0 0,0 60.1,87.0 Z" fill="#66FF00"/>
+        <!-- Labels at ring midpoint r=60 -->
+        <text x="160" y="104" fill="#1A1A1A" font-size="10" font-weight="700" font-family="Helvetica Neue,Arial" text-anchor="middle">50%</text>
+        <text x="52"  y="139" fill="#fff"    font-size="10" font-weight="700" font-family="Helvetica Neue,Arial" text-anchor="middle">30%</text>
+        <text x="65"  y="53"  fill="#1A1A1A" font-size="10" font-weight="700" font-family="Helvetica Neue,Arial" text-anchor="middle">20%</text>
+      </svg>
+      <div class="arch-legend">
+        <div class="arch-legend-item"><div class="arch-legend-dot" style="background:#FF00BB;"></div><span>Der Weise</span><span class="arch-legend-pct">Primär · 50%</span></div>
+        <div class="arch-legend-item"><div class="arch-legend-dot" style="background:#8054F1;"></div><span>Der Held</span><span class="arch-legend-pct">Sekundär · 30%</span></div>
+        <div class="arch-legend-item"><div class="arch-legend-dot" style="background:#66FF00;"></div><span>Der Gefährte</span><span class="arch-legend-pct">Korrektiv · 20%</span></div>
+      </div>
+    </div>
+    <div class="arch-col arch-primary">
+      <div class="arch-col-title">Der Weise · Primär</div>
+      <div class="tag-wrap">
+        <span class="tag">Methodik</span><span class="tag">Daten</span><span class="tag">Analyse</span><span class="tag">Beweis</span><span class="tag">Präzision</span><span class="tag">Forschung</span><span class="tag">Fakten</span><span class="tag">Kompetenz</span><span class="tag">Wissenschaft</span><span class="tag">Anwendbarkeit</span>
+      </div>
+    </div>
+    <div class="arch-col arch-secondary">
+      <div class="arch-col-title">Der Held · Sekundär</div>
+      <div class="tag-wrap">
+        <span class="tag">Haltung</span><span class="tag">Gegenwind</span><span class="tag">Klarheit</span><span class="tag">Angreifbar</span><span class="tag">Mut</span><span class="tag">Position</span><span class="tag">Wirkung</span><span class="tag">Widerstand</span><span class="tag">Entschlossenheit</span><span class="tag">Durchsetzen</span>
+      </div>
+    </div>
+    <div class="arch-col arch-tertiary">
+      <div class="arch-col-title">Der Gefährte · Korrektiv</div>
+      <div class="tag-wrap">
+        <span class="tag">Einladung</span><span class="tag">Kooperation</span><span class="tag">Augenhöhe</span><span class="tag">Netzwerk</span><span class="tag">Gemeinschaft</span><span class="tag">Partnerschaft</span><span class="tag">Offenheit</span><span class="tag">Zugänglich</span><span class="tag">Geerdet</span><span class="tag">Vertrauen</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ACCESSIBILITY ── -->
+<div class="s">
+  <div class="s-label">Farbkontrast — WCAG / APCA</div>
+  <div class="a11y-grid">
+
+    <div class="a11y-card">
+      <div class="a11y-preview" style="background:#1A1A1A;">
+        <span class="a11y-sample" style="color:#FF00BB;">Habitat 2030</span>
+      </div>
+      <div class="a11y-data">
+        <div class="a11y-pair">Magenta auf Dunkel</div>
+        <div class="a11y-vals">WCAG 5.1:1 · Lc ~65</div>
+        <div class="a11y-status status-warn">UI ✓ · Body: nur Large/Bold</div>
+      </div>
+    </div>
+
+    <div class="a11y-card">
+      <div class="a11y-preview" style="background:#FF00BB;">
+        <span class="a11y-sample" style="color:#1A1A1A;">Habitat 2030</span>
+      </div>
+      <div class="a11y-data">
+        <div class="a11y-pair">Dunkel auf Magenta</div>
+        <div class="a11y-vals">WCAG 5.1:1 · Lc ~65</div>
+        <div class="a11y-status status-warn">UI ✓ · Body: nur Large/Bold</div>
+      </div>
+    </div>
+
+    <div class="a11y-card">
+      <div class="a11y-preview" style="background:#1A1A1A;">
+        <span class="a11y-sample" style="color:#8054F1;">Habitat 2030</span>
+      </div>
+      <div class="a11y-data">
+        <div class="a11y-pair">Violett auf Dunkel</div>
+        <div class="a11y-vals">WCAG 3.8:1 · Lc ~52</div>
+        <div class="a11y-status status-fail">Nur Display · kein Fließtext</div>
+      </div>
+    </div>
+
+    <div class="a11y-card">
+      <div class="a11y-preview" style="background:#1A1A1A;">
+        <span class="a11y-sample" style="color:#66FF00;">Habitat 2030</span>
+      </div>
+      <div class="a11y-data">
+        <div class="a11y-pair">Lime auf Dunkel</div>
+        <div class="a11y-vals">WCAG 13.5:1 · Lc ~95</div>
+        <div class="a11y-status status-ok">AAA ✓ · Ausgezeichnet</div>
+      </div>
+    </div>
+
+    <div class="a11y-card">
+      <div class="a11y-preview" style="background:#B9B2A5;">
+        <span class="a11y-sample" style="color:#1A1A1A;">Habitat 2030</span>
+      </div>
+      <div class="a11y-data">
+        <div class="a11y-pair">Dunkel auf Sand</div>
+        <div class="a11y-vals">WCAG 8.6:1 · Lc ~80</div>
+        <div class="a11y-status status-ok">AA ✓ · Gut für Body</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer">
+  <span><span class="footer-mark">Habitat 2030</span> · Brand Preview</span>
+  <span>Dunkel · Sand · Magenta · Violett · Lime · Neue Haas Unica · 2026</span>
+</div>
+
 </body>
 </html>
